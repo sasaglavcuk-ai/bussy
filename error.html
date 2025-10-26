@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="uk">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Помилка оплати — BusPay</title>
+  <link rel="icon" href="/assets/logo.svg">
+  <link rel="stylesheet" href="/styles.css" />
+  <style>
+    .error-badge{
+      display:inline-flex;align-items:center;gap:10px;
+      background:#fff1f1;border:1px solid #ffc9c9;color:#c92a2a;
+      padding:10px 14px;border-radius:12px;font-weight:700;margin-bottom:10px
+    }
+    .error-badge .dot{width:10px;height:10px;border-radius:50%;background:#fa5252}
+  </style>
+</head>
+<body>
+  <main class="container success">
+    <img src="/assets/logo.svg" alt="BusPay" class="logo success-logo" />
+    <div class="error-badge"><span class="dot"></span> Помилка оплати</div>
+    <h1>Виникла помилка, спробуйте ще раз пізніше</h1>
+    <p>Якщо кошти було заблоковано банком, вони автоматично розблокуються. Спробуйте повторити оплату згодом.</p>
+    <a href="/" class="btn-primary">Повернутися на головну</a>
+  </main>
+</body>
+</html>

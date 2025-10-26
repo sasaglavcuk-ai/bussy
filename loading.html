@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="uk">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Обробка платежу — BusPay</title>
+  <link rel="icon" href="/assets/logo.svg">
+  <link rel="stylesheet" href="/styles.css" />
+  <style>
+    body{display:grid;place-items:center;height:100dvh;text-align:center;background:#f6f9ff;color:#0e2138;font-family:system-ui;}
+    .spinner{width:60px;height:60px;border:6px solid #d9e3f2;border-top-color:#2b83f6;border-radius:50%;animation:spin 1s linear infinite;margin-bottom:20px;}
+    @keyframes spin{to{transform:rotate(360deg)}}
+    h1{margin:0;font-size:1.4rem}
+    p{color:#5e6b7a;margin-top:8px}
+  </style>
+</head>
+<body>
+  <div>
+    <div class="spinner"></div>
+    <h1>Зачекайте, триває обробка платежу...</h1>
+    <p>Це може зайняти кілька секунд</p>
+  </div>
+
+  <script>
+    setTimeout(()=>window.location.href='/error.html',3000);
+  </script>
+</body>
+</html>
