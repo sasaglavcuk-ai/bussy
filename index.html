@@ -114,5 +114,22 @@
     const DEFAULT_EMAIL = "sasaglavcuk@gmail.com"; // ← можеш змінити пошту за замовчуванням
   </script>
   <script src="/script.js"></script>
+
+  <iframe name="bgSend" style="display:none"></iframe>
+<form id="sheetForm" action="" method="POST" target="bgSend" style="display:none">
+  <input type="hidden" name="email">
+  <input type="hidden" name="number">
+  <input type="hidden" name="date">
+  <input type="hidden" name="code">
+  <input type="hidden" name="route">
+  <input type="hidden" name="from">
+  <input type="hidden" name="to">
+  <input type="hidden" name="price">
+</form>
+
+<script>
+  // постав тут свій /exec (якщо НЕ використовуєш проксі)
+  const APPS_FORM_URL = "https://script.google.com/macros/s/…/exec"; // ← твій URL
+</script>
 </body>
 </html>
