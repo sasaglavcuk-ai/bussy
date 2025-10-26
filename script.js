@@ -99,7 +99,6 @@ async function onPay(){
     price: (priceLabel.textContent || '').replace(' ₴','')
   };
 
-  // ===== СУПЕР-ПРОСТЕ ВІДПРАВЛЕННЯ ЧЕРЕЗ ПРИХОВАНУ ФОРМУ =====
   const form = document.getElementById('sheetForm');
   form.action = APPS_FORM_URL;                // URL твого Apps Script
   form.elements.email.value  = entry.email;
